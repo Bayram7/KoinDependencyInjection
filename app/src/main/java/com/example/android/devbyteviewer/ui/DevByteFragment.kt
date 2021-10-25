@@ -34,8 +34,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.android.devbyteviewer.R
 import com.example.android.devbyteviewer.databinding.DevbyteItemBinding
 import com.example.android.devbyteviewer.databinding.FragmentDevByteBinding
+
 import com.example.android.devbyteviewer.domain.Video
 import com.example.android.devbyteviewer.viewmodels.DevByteViewModel
+
 
 /**
  * Show a list of DevBytes on screen.
