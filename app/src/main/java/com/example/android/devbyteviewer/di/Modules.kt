@@ -5,6 +5,7 @@ import androidx.room.Room
 import com.example.android.devbyteviewer.database.VideosDatabase
 import com.example.android.devbyteviewer.network.DevbyteService
 import com.example.android.devbyteviewer.repository.VideosRepository
+import com.example.android.devbyteviewer.viewmodels.DevByteViewModel
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
@@ -12,6 +13,11 @@ import org.koin.dsl.module.module
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 
+
+
+val viewModelModule = module {
+    single { DevByteViewModel(get()) }
+}
 
 val netModule = module {
     fun provideMoshi(): Moshi {

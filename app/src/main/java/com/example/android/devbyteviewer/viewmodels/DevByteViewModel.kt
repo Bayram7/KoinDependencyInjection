@@ -41,10 +41,9 @@ import java.io.IOException
  * reference to applications across rotation since Application is never recreated during actiivty
  * or fragment lifecycle events.
  */
-class DevByteViewModel(application: Application) : AndroidViewModel(application), KoinComponent {
+class DevByteViewModel(private val videosRepository: VideosRepository) : ViewModel(){
 //    private val database = getDatabase(application)
 //    private val videosRepository = VideosRepository(database)
-    private val videosRepository: VideosRepository by inject()
 
     init {
         viewModelScope.launch { videosRepository.refreshVideos() }
@@ -55,13 +54,13 @@ class DevByteViewModel(application: Application) : AndroidViewModel(application)
     /**
      * Factory for constructing DevByteViewModel with parameter
      */
-    class Factory(val app: Application) : ViewModelProvider.Factory {
-        override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-            if (modelClass.isAssignableFrom(DevByteViewModel::class.java)) {
-                @Suppress("UNCHECKED_CAST")
-                return DevByteViewModel(app) as T
-            }
-            throw IllegalArgumentException("Unable to construct viewmodel")
-        }
-    }
+//    class Factory(val app: Application) : ViewModelProvider.Factory {
+//        override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+//            if (modelClass.isAssignableFrom(DevByteViewModel::class.java)) {
+//                @Suppress("UNCHECKED_CAST")
+//                return DevByteViewModel() as T
+//            }
+//            throw IllegalArgumentException("Unable to construct viewmodel")
+//        }
+//    }
 }

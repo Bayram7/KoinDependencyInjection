@@ -36,6 +36,8 @@ class RefreshDataWorker(appContext: Context, params: WorkerParameters) :
     }
 
     override suspend fun doWork(): Result {
+//        val database = getDatabase(applicationContext)
+//        val repository = VideosRepository(database)
         val repository: VideosRepository by inject()
         return try {
             repository.refreshVideos()

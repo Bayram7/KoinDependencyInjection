@@ -20,10 +20,7 @@ package com.example.android.devbyteviewer
 import android.app.Application
 import android.os.Build
 import androidx.work.*
-import com.example.android.devbyteviewer.di.apiModule
-import com.example.android.devbyteviewer.di.databaseModule
-import com.example.android.devbyteviewer.di.netModule
-import com.example.android.devbyteviewer.di.repositoryModule
+import com.example.android.devbyteviewer.di.*
 
 import com.example.android.devbyteviewer.work.RefreshDataWorker
 import kotlinx.coroutines.CoroutineScope
@@ -49,9 +46,8 @@ class DevByteApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         Timber.plant(Timber.DebugTree())
-        startKoin(this, listOf(databaseModule,netModule, apiModule, repositoryModule))
+        startKoin(this, listOf(viewModelModule,databaseModule,netModule, apiModule, repositoryModule))
         delayedInit()
-
     }
 
     private fun delayedInit() = applicationScope.launch {
