@@ -38,11 +38,13 @@ buildscript {
         version_joda = "2.10"
         version_work = "1.0.1"
         version_timber = "4.7.1"
+        
     }
 
     repositories {
         google()
         jcenter()
+
     }
 
     dependencies {

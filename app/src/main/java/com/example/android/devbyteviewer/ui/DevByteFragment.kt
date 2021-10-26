@@ -34,8 +34,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.android.devbyteviewer.R
 import com.example.android.devbyteviewer.databinding.DevbyteItemBinding
 import com.example.android.devbyteviewer.databinding.FragmentDevByteBinding
+
 import com.example.android.devbyteviewer.domain.Video
 import com.example.android.devbyteviewer.viewmodels.DevByteViewModel
+import org.koin.android.viewmodel.ext.android.viewModel
+
 
 /**
  * Show a list of DevBytes on screen.
@@ -47,15 +50,16 @@ class DevByteFragment : Fragment() {
      * lazy. This requires that viewModel not be referenced before onViewCreated(), which we
      * do in this Fragment.
      */
-    private val viewModel: DevByteViewModel by lazy {
-        val activity = requireNotNull(this.activity) {
-            "You can only access the viewModel after onViewCreated()"
-        }
-        //The ViewModelProviders (plural) is deprecated.  
-        //ViewModelProviders.of(this, DevByteViewModel.Factory(activity.application)).get(DevByteViewModel::class.java)
-        ViewModelProvider(this, DevByteViewModel.Factory(activity.application)).get(DevByteViewModel::class.java)
-                
-    }
+    private val viewModel by viewModel<DevByteViewModel>()
+//    {
+//        val activity = requireNotNull(this.activity) {
+//            "You can only access the viewModel after onViewCreated()"
+//        }
+    //The ViewModelProviders (plural) is deprecated.
+    //ViewModelProviders.of(this, DevByteViewModel.Factory(activity.application)).get(DevByteViewModel::class.java)
+//        ViewModelProvider(this).get(DevByteViewModel::class.java)
+
+//    }
 
     /**
      * RecyclerView Adapter for converting a list of Video to cards.
@@ -114,7 +118,7 @@ class DevByteFragment : Fragment() {
 
             // Try to generate a direct intent to the YouTube app
             var intent = Intent(Intent.ACTION_VIEW, it.launchUri)
-            if(intent.resolveActivity(packageManager) == null) {
+            if (intent.resolveActivity(packageManager) == null) {
                 // YouTube app isn't found, use the web url
                 intent = Intent(Intent.ACTION_VIEW, Uri.parse(it.url))
             }
