@@ -38,14 +38,5 @@ class DevByteActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dev_byte_viewer)
 
-
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-//            // Create channel to show notifications.
-//            val channelId = getString(R.string.default_notification_channel_id)
-//            val channelName = getString(R.string.default_notification_channel_name)
-//            val notificationManager = getSystemService(NotificationManager::class.java)
-//            notificationManager?.createNotificationChannel(NotificationChannel(channelId,
-//                    channelName, NotificationManager.IMPORTANCE_LOW))
-//        }
     }
 }
