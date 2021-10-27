@@ -20,6 +20,9 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 apply plugin: "androidx.navigation.safeargs"
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'com.google.gms.google-services'
+
+
 
 android {
     compileSdkVersion 30
@@ -100,4 +103,8 @@ dependencies {
     //Koin
     implementation "org.koin:koin-android:1.0.2"
     implementation "org.koin:koin-android-viewmodel:1.0.2"
+
+
+    implementation 'com.google.firebase:firebase-analytics:17.2.3'
+    implementation 'com.google.firebase:firebase-messaging:20.1.3'
 }

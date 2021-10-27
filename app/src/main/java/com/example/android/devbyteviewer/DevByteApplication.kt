@@ -19,10 +19,14 @@ package com.example.android.devbyteviewer
 
 import android.app.Application
 import android.os.Build
+import android.util.Log
+import android.widget.Toast
 import androidx.work.*
 import com.example.android.devbyteviewer.di.*
 
 import com.example.android.devbyteviewer.work.RefreshDataWorker
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.firebase.iid.FirebaseInstanceId
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -50,8 +54,27 @@ class DevByteApplication : Application() {
         delayedInit()
     }
 
+    private fun getInstanceId() {
+        FirebaseInstanceId.getInstance().instanceId
+                .addOnCompleteListener(OnCompleteListener { task ->
+                    // 2
+                    if (!task.isSuccessful) {
+                        Log.w("TOKEN", "getInstanceId failed", task.exception)
+                        return@OnCompleteListener
+                    }
+                    // 3
+                    val token = task.result?.token
+
+                    // 4
+                    if (token != null) {
+                        Log.d("TOKEN", token)
+                    }
+                })
+    }
+
     private fun delayedInit() = applicationScope.launch {
         setupRecurringWork()
+        getInstanceId()
     }
 
     private fun setupRecurringWork() {

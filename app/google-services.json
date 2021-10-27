@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "214105492117",
+    "project_id": "dev-bytes-5a0cf",
+    "storage_bucket": "dev-bytes-5a0cf.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:214105492117:android:dd145c105f1c1ad37f299c",
+        "android_client_info": {
+          "package_name": "com.example.android.devbyteviewer"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "214105492117-d5dn5el9alq6sff4hivso6s76ede047h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyChrpn18yz1qXQYr_R4v_APpBOmPe7yJ9o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "214105492117-d5dn5el9alq6sff4hivso6s76ede047h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
